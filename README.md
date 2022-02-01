@@ -1,40 +1,26 @@
-# create-svelte
+# Vitebook Addons
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+An [addon](https://vitebook.dev/guides/addons.html) for [Vitebook](https://vitebook.dev) published using [SvelteKit packaging](https://kit.svelte.dev/docs#packaging).
 
-## Creating a project
+`Knobs.svelte` component modeled after [Svench knobs](https://svench-docs.vercel.app/_/Usage/knobs)
 
-If you're seeing this, you've probably already done this step. Congrats!
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
+ Pass knobs properties (boolean, string, number, or range) to the `input` prop access values from `let:output`. Typescript provides autocompletion for the proper properties on the way out. I prefer to use the shortcut notation as documented in the [Svench knobs docs](https://svench-docs.vercel.app/_/Usage/knobs#knobs-passed-as-plain-objects-shortcut-notation) with the type of the knob being inferred from it.
 
-# create a new project in my-app
-npm init svelte@next my-app
-```
+Range knobs can be declared using a default value matching the format `${minValue}${maxValue};${initialValue}` (e.g., `-10-10;5`).
 
-> Note: the `@next` is temporary
 
-## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Usage
 
-```bash
-npm run dev
+```js
+import { Knobs } from 'vitebook-addons';
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+<Knobs input={{ myBool: false, myNum: 10, myStr: 'hello', myRange: '-10-10;5' }} let:output={{myBool, myNum, myStr, myRange}}>
+  <MyComponent>{myBool},{myNum},{myStr},{myRange}</MyComponent>
+</Knobs>
+  ```
 
-## Building
 
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs#adapters) for your target environment.
+## TODO
+Though full object notation works as seen in the Svench docs, the type interface will be incorrect. If someone has a compelling use case for full object notation, they can help me know how to improve the use of Generics and types through the `knobs.ts` file to achieve such.
