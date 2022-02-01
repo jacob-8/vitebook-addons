@@ -1,5 +1,7 @@
 # Vitebook Addons
 
+`npm i -D vitebook-addons`
+
 An [addon](https://vitebook.dev/guides/addons.html) for [Vitebook](https://vitebook.dev) published using [SvelteKit packaging](https://kit.svelte.dev/docs#packaging).
 
 `Knobs.svelte` component modeled after [Svench knobs](https://svench-docs.vercel.app/_/Usage/knobs)
